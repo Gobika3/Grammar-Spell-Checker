@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grammar and Spell Checker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      backdrop-filter: blur(5px);
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      border-radius: 16px;
+      padding: 30px;
+      width: 90%;
+      max-width: 650px;
+      color: #fff;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    select, input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .content-editable {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      min-height: 120px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      white-space: pre-wrap;
+      overflow-y: auto;
+      max-height: 250px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    #check-btn {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    #check-btn:hover {
+      background-color: #218838;
+    }
+
+    .reset {
+      background-color: #dc3545;
+      color: #fff;
+    }
+
+    .reset:hover {
+      background-color: #c82333;
+    }
+
+    .highlight-error {
+      background-color: red;
+      color: white;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    #file-content {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      min-height: 150px;
+      display: none;
+      color: #fff;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      white-space: pre-wrap;
+      overflow-y: auto;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    .loading {
+      text-align: center;
+      color: #fff;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .validation-message {
+      color: #ffcccb;
+      font-weight: bold;
+      text-align: center;
+      margin-top: -15px;
+      margin-bottom: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Grammar and Spell Checker</h1>
+    <label for="input-mode">Choose Input Mode:</label>
+    <select id="input-mode">
+      <option value="typing">Typing</option>
+      <option value="file">File Upload</option>
+    </select>
+
+    <div id="text-area" class="content-editable" contenteditable="true" placeholder="Type your content here..."></div>
+    <input type="file" id="file-input" style="display: none;" accept=".txt,.pdf,.docx,.doc,.xlsx,.pptx">
+
+    <div id="validation-message" class="validation-message" style="display: none;">Please provide text or upload a file.</div>
+
+    <div class="buttons">
+      <button id="check-btn">Check</button>
+      <button class="reset" id="reset-btn">Reset</button>
+    </div>
+
+    <div id="loading" class="loading" style="display: none;">Checking for errors...</div>
+
+    <label for="file-content">Uploaded File Content:</label>
+    <div id="file-content"></div>
+
+    <div id="error-results" class="suggestions" style="display: none;">
+      <h3>Errors and Suggestions:</h3>
+      <table id="suggestions-table">
+        <thead>
+          <tr><th>Error Word</th><th>Suggestion</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- JS (unchanged from your version) -->
+  <script>
+    // JS remains the same as your original
+  </script>
+</body>
+</html>
